@@ -25,9 +25,14 @@ public class GeoMap {
     private JFrame fMain;
     private JPanel pMap;
     private ArrayList<CPoint> geoPoints;
+    private final Dimension mapSize = new Dimension(800,600);
     
     public GeoMap() {
         geoPoints = new ArrayList<>(); // initialize the ArrayList
+        geoPoints.add(new CPoint("MILANO",new Coordinate(45,27f,40.68f),new Coordinate(9,9f,34.20f),this));
+        geoPoints.add(new CPoint("ROMA",new Coordinate(41,53f,36f),new Coordinate(12,28f,58f),this));
+        geoPoints.add(new CPoint("TORINO",new Coordinate(44,4f,13.8f),new Coordinate(7,41f,12.6f),this));
+                
         fMain = new JFrame("GeoMap");
         fMain.setLocation(400, 200);
         pMap = new JPanel() {
@@ -35,27 +40,28 @@ public class GeoMap {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(Color.WHITE);
-                g.draw3DRect(50, 50, 60, 60, true);
+                for (CPoint cp : geoPoints) {
+                    g.fillRect(cp.pos().x, cp.pos().y, 5, 5);
+                    g.drawString(cp.getID(), cp.pos().x+3, cp.pos().y+3);
+                }
             }
         };
         pMap.setBackground(Color.BLACK);
         fMain.setLayout(new FlowLayout());
-        pMap.setPreferredSize(new Dimension(800,600));
+        pMap.setPreferredSize(mapSize);
         fMain.add(pMap);
         fMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fMain.pack();
       
         fMain.setVisible(true);
         
-        geoPoints.add(new CPoint("MILANO",new Coordinate(45,27f,40.68f),new Coordinate(9,9f,34.20f),800,600));
-        geoPoints.add(new CPoint("ROMA",new Coordinate(41,53f,36f),new Coordinate(12,28f,58f),800,600));
-        geoPoints.add(new CPoint("TORINO",new Coordinate(44,4f,13.8f),new Coordinate(7,41f,12.6f),800,600));
-        
-        for (CPoint cp : geoPoints)
+        /*for (CPoint cp : geoPoints)
             System.out.println(cp);
-        
-        
-        
+        */
+    }
+    
+    public Dimension getMapSize() {
+        return mapSize;
     }
     
     public float maxLat() {
