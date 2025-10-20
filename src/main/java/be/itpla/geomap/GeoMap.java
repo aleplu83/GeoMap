@@ -46,9 +46,53 @@ public class GeoMap {
         fMain.pack();
       
         fMain.setVisible(true);
+        
+        geoPoints.add(new CPoint("MILANO",new Coordinate(45,27f,40.68f),new Coordinate(9,9f,34.20f),800,600));
+        geoPoints.add(new CPoint("ROMA",new Coordinate(41,53f,36f),new Coordinate(12,28f,58f),800,600));
+        geoPoints.add(new CPoint("TORINO",new Coordinate(44,4f,13.8f),new Coordinate(7,41f,12.6f),800,600));
+        
+        for (CPoint cp : geoPoints)
+            System.out.println(cp);
+        
+        
+        
     }
     
-   
+    public float maxLat() {
+        float max = 0.0f;
+        for (CPoint cp : geoPoints)
+            if (cp.lat() > max)
+                max = cp.lat();
+
+        return max;
+    }
+    
+    public float maxLng() {
+        float max = 0.0f;
+        for (CPoint cp : geoPoints)
+            if (cp.lng() > max)
+                max = cp.lng();
+
+        return max;
+    }
+    
+    public float minLat() {
+        float min = 0.0f;
+        for (CPoint cp : geoPoints)
+            if (cp.lat() < min)
+                min = cp.lat();
+
+        return min;
+    }
+    
+    public float minLng() {
+        float min = 0.0f;
+        for (CPoint cp : geoPoints)
+            if (cp.lng() < min)
+                min = cp.lng();
+
+        return min;
+    }
     
     
     public static void main(String[] args) {
