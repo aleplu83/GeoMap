@@ -4,8 +4,6 @@
  */
 package be.itpla.geomap;
 
-import java.util.Comparator;
-
 /**
  *
  * @author Alessandro
