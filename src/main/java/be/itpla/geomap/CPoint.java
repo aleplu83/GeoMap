@@ -17,29 +17,32 @@ public class CPoint {
  
     private String ID;
     private Coordinate lat,lng;
-    private int mapWidth,mapHeight;
+    private GeoMap map;
     
     public CPoint() {
         // Empty constructor
     }
 
-    public CPoint(String ID, Coordinate lat, Coordinate lng,int mapWidth,int mapHeight) {
+    public CPoint(String ID, Coordinate lat, Coordinate lng,GeoMap map) {
         this.ID = ID;
         this.lat = lat;
         this.lng = lng;
-        this.mapWidth = mapWidth;
-        this.mapHeight = mapHeight;
+        this.map = map;
     }
 
     @Override
     public String toString() {
         return "ID: "+ ID+"\tLatitude: "+lat.toDD()+"\tLongitude: "+lng.toDD();
     }
-    
+
+    public String getID() {
+        return ID;
+    }
      
     public Point pos() {
-        //return new Point((int)pMap.getWidth() / (pMap.getMaxLng()-mapSize.getMinLng()),0);
-        return new Point();
+        int x = (int) (map.getMapSize().width / (map.maxLng()-map.minLng()));
+        int y = (int) (map.getMapSize().height / (map.maxLat()-map.minLat()));
+        return new Point(x,y);
     }
 
     public float lat() {
