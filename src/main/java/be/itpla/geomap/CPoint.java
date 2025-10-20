@@ -39,6 +39,11 @@ public class CPoint {
         return ID;
     }
      
+    /*
+    convert to XY
+    divide map size by difference between max-min of lat and long
+    
+    */
     public Point pos() {
         int x = (int) (map.getMapSize().width / (map.maxLng()-map.minLng()));
         int y = (int) (map.getMapSize().height / (map.maxLat()-map.minLat()));
