@@ -10,9 +10,9 @@ package be.itpla.geomap;
  */
 public class Coordinate {
     
-    private int deg;
-    private float min;
-    private float sec;
+    private final int deg;
+    private final float min;
+    private final float sec;
 
     public Coordinate(int deg, float min, float sec) {
         this.deg = deg;
