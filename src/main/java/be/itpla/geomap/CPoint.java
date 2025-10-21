@@ -4,8 +4,6 @@
  */
 package be.itpla.geomap;
 
-import java.awt.Point;
-
 /**
  *
  * @author Alessandro
@@ -32,7 +30,7 @@ public class CPoint {
 
     @Override
     public String toString() {
-        return "ID: "+ ID+"\tLatitude: "+lat.toDD()+"\tLongitude: "+lng.toDD();
+        return "ID: "+ ID+"\tLatitude: "+lat.getDD()+"\tLongitude: "+lng.getDD() + "\tX: "+getX()+"\tY: "+getY();
     }
 
     public String getID() {
@@ -44,18 +42,19 @@ public class CPoint {
     divide map size by difference between max-min of lat and long
     
     */
-    public Point pos() {
-        int x = (int) (map.getMapSize().width / (map.maxLng()-map.minLng()));
-        int y = (int) (map.getMapSize().height / (map.maxLat()-map.minLat()));
-        return new Point(x,y);
+    public int getX() {
+        return (int)(map.getMapSize().width / (map.getMaxLng()-map.getMinLng())*(lng.getDD()-map.getMinLng()));
+    }
+    public int getY() {
+        return (int)(map.getMapSize().height / (map.getMaxLat()-map.getMinLat())*(lat.getDD()-map.getMinLat()));
     }
 
     public float lat() {
-        return lat.toDD();
+        return lat.getDD();
     }
     
     public float lng() {
-        return lng.toDD();
+        return lng.getDD();
     }
 
 }
