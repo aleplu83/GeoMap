@@ -20,8 +20,11 @@ public class Coordinate {
         this.dd = dd;
     }
     
-    public Coordinate(int deg, float min, float sec) {
+    public Coordinate(char pole,int deg, float min, float sec) {
         dd=deg+(min/60)+(sec/3600); // Convert to Decimal Degrees
+        if (pole == 'S' || pole == 'W') // if pole is South or West
+            dd*=-1;
+        
     }
     
     public Coordinate(String DMS) {
