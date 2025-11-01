@@ -32,7 +32,7 @@ public class GeoMap {
     public GeoMap() {
         geoPoints = new ArrayList<>(); // initialize the ArrayList
         geoPoints.add(new CPoint("MILANO",new Coordinate(45.4654f),new Coordinate(9.1859f),this));
-        geoPoints.add(new CPoint("ROMA",new Coordinate(41,53f,36f),new Coordinate(12,28f,58f),this));
+        geoPoints.add(new CPoint("ROMA",new Coordinate('N',41,53f,36f),new Coordinate('E',12,28f,58f),this));
         geoPoints.add(new CPoint("TORINO",new Coordinate(45.0705f),new Coordinate(7.68682f),this));
         geoPoints.add(new CPoint("Firenze",new Coordinate(43.7700f),new Coordinate(11.2577f),this));
         geoPoints.add(new CPoint("Pisa",new Coordinate(43.7228f),new Coordinate(10.4018f),this));
